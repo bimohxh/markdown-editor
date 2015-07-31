@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="codemirror/lib/codemirror.css" media="screen" rel="stylesheet" />
+    <link href="css/editor.css" media="screen" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="markdown-wraper">
+      <div class="preview-wraper">
+        <div id="preview"></div>
+      </div>
+
+      <div class="spliter"></div>
+
+      <div class="editor-wraper unselect">
+        <div class="inner">
+          <textarea id="meditor"></textarea>    
+        </div>
+
+      </div>
+
+    </div> 
+    <script src="js/jquery.js"></script>
+    <script src="codemirror/lib/codemirror.js"></script>
+    <script src="codemirror/addon/edit/continuelist.js"></script>
+    <script src="codemirror/mode/xml/xml.js"></script>
+    <script src="codemirror/mode/markdown/markdown.js"></script>
+    <script src="js/marked.js"></script>
+    <script src="js/online.js"></script>
+
+    <script>
+      /*CodeMirror 初始化markdown editor*/
+      var markdown_editor = CodeMirror.fromTextArea(document.getElementById("meditor"), {
+          mode: 'markdown',
+          theme: "default",
+          lineWrapping: true,
+          extraKeys: {"Enter": "newlineAndIndentContinueMarkdownList"}
+        });
+
+      /*渲染用户之前保存的输入*/
+      if(localStorage.markdown){
+        markdown_editor.setValue(localStorage.markdown);   
+      }
+      
+
+      /*注册编辑器改变事件 及时存储和渲染*/
+      markdown_editor.on("change",function(){
+        /*自动保存内容 防止用户输入丢失*/
+        localStorage.markdown = markdown_editor.getValue();
+        $("#preview").html(marked(markdown_editor.getValue()));
+      })
+
+      $("#preview").html(marked(markdown_editor.getValue()));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,73 @@
+html,body{height: 100%; font-size: 13px;}
+
+.markdown-wraper {
+  overflow: hidden;
+  height: 100%;
+  position: relative;
+}
+
+.markdown-wraper * {
+  font-family: 'lucida grande', 'lucida sans unicode', lucida, helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', 'WenQuanYi Micro Hei', sans-serif;
+}
+
+.markdown-wraper > div {
+  z-index: 10;
+  position: absolute;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  border: #DDD 1px solid;
+}
+
+.markdown-wraper > div.preview-wraper {
+  width: 40%;
+  left: 0;
+  box-shadow: inset 0 1px 2px #e4e4e4;
+}
+
+.markdown-wraper > div.preview-wraper > div {
+  overflow-y: scroll;
+  height: 100%;
+  padding: 10px;
+}
+
+.markdown-wraper > div.editor-wraper {
+  border-left: #DDD 1px solid;
+  width: 60%;
+  right: 0;
+  box-shadow: inset 0 1px 2px #e4e4e4;
+}
+
+.markdown-wraper > div.editor-wraper textarea {
+  width: 100%;
+  border: 0;
+  outline: none;
+  height: 100%;
+}
+
+.markdown-wraper > div.editor-wraper .inner {
+  padding: 10px;
+  position: relative;
+  height: 100%;
+}
+
+.markdown-wraper > div.spliter {
+  width: 5px;
+  background-color: #111;
+  left: 40%;
+  z-index: 11;
+  cursor: col-resize;
+}
+
+.markdown-wraper .CodeMirror {
+  height: 100%;
+}
+
+.unselect {
+-webkit-user-select: none; 
+-moz-user-select: none;
+-khtml-user-select: none;
+-ms-user-select: none;
+-o-user-select: none;
+user-select: none;
+}
